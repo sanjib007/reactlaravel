@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::resource('/blogs', 'Api\BlogController');
+Route::resource('/category', 'Api\CategoryController');

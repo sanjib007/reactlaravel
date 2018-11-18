@@ -1,7 +1,26 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-
+import axios from 'axios';
 export default class Listing extends Component {
+
+    constructor(){
+        super();
+        this.state = {
+            categoriesName : []
+        }
+
+    }
+    componentDidMount() {
+        axios.get('/category')
+            .then(data => {                // <== Change is here
+                console.log(data.data);
+
+                this.setState({
+                    categoriesName: data.data
+                });
+
+            });
+    }
     render() {
         return (
             <div>
@@ -16,27 +35,18 @@ export default class Listing extends Component {
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Category 1</td>
-                        <td>Active</td>
-                        <td>17-11-2018 00:00:00</td>
-                        <td>17-11-2018 00:00:00</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Category 2</td>
-                        <td>Active</td>
-                        <td>17-11-2018 00:00:00</td>
-                        <td>17-11-2018 00:00:00</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Category 3</td>
-                        <td>Active</td>
-                        <td>17-11-2018 00:00:00</td>
-                        <td>17-11-2018 00:00:00</td>
-                    </tr>
+                    {this.state.categoriesName.map(category => {
+                        return(
+                            <tr key={category.id}>
+                                <th scope="row">{category.id}</th>
+                                <td>{category.name}</td>
+                                <td>{category.active}</td>
+                                <td>{category.created_at}</td>
+                                <td>{category.updated_at}</td>
+                            </tr>
+                            )
+                    })}
+
                     </tbody>
                 </table>
             </div>
