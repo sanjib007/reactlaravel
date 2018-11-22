@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import FormErrors from "../FromErrors";
 export default class Add extends Component {
 
     constructor(){
@@ -27,9 +26,9 @@ export default class Add extends Component {
         e.preventDefault();
         if (this.validateForm()) {
             let fields = {};
-            fields["category"] = "";
-            fields["status"] = "";
-
+            fields["category"] = this.state.fields.category;
+            fields["status"] = this.state.fields.status;
+console.log('aaa', this.state.fields);
             this.setState({fields:fields});
             alert("Form submitted");
         }

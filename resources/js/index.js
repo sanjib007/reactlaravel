@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import Blog from "./components/Blog";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Example from "./components/Example";
+import Examplee from "./components/Example";
+import Blog from "./components/Blog";
 
 export default class Index extends Component {
     render() {
@@ -11,13 +11,11 @@ export default class Index extends Component {
                 <Router>
                     <div>
                         <Link to="/">Home</Link>
-                        <Link to="/blog">blog</Link>
-                        <Route path="/" Component={Example} />
-                        <Route path="/" Component={Blog} />
+                        <Link to="/blog">Blog</Link>
+                        <Route path="/" exact component={Examplee} />
+                        <Route path="/blog" exact component={Blog} />
                     </div>
                 </Router>
-
-                <Blog />
             </div>
         );
     }
