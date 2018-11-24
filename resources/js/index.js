@@ -14,6 +14,8 @@ export default class Index extends Component {
                         <Link to="/blog">Blog</Link>
                         <Route path="/" exact component={Examplee} />
                         <Route path="/blog" exact component={Blog} />
+                        <Route path="/blog" exact component={Blog} />
+                        <Route path="/blog/:id" exact render={} />
                     </div>
                 </Router>
             </div>
